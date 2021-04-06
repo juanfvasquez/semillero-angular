@@ -1,0 +1,48 @@
+.item-pt-contenedor {
+  width: 100%;
+  padding: 10px;
+
+  .tarjeta {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 3px 3px 5px 6px #bbb;
+
+    .footer-item {
+      position: relative;
+      width: 100%;
+
+      i.fa-caret-left {
+        position: absolute;
+        top: -20px;
+        left: 10px;
+        font-size: 22px;
+      }
+      i.fa-caret-right {
+        position: absolute;
+        top: -20px;
+        right: 10px;
+        font-size: 22px;
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .nombre-pokemon {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .dato-pokemon {
+    font-size: 11px;
+  }
+}

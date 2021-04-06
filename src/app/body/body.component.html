@@ -1,0 +1,24 @@
+<div>
+  <h3>{{ titulo }}</h3>
+  <ul>
+    <li *ngFor="let i of listaObjetosPersona">
+      <app-item [objetoPersona]="i"></app-item>
+    </li>
+  </ul>
+  <div style="display: flex; flex-direction: column; width: 150px;">
+    <label for="txtPersona">Ingrese nombre de la persona</label>
+    <input type="text" name="nombrePersona" id="txtPersona"
+           (change)="eventoInput($event, 'nombre')" [value]="nombrePersona">
+    <input type="text" name="apellidoPersona" id="txtApellido"
+           (change)="eventoInput($event, 'apellido')" [value]="apellidoPersona">
+    <input type="number" name="edadPersona" id="txtEdad"
+           (change)="eventoInput($event, 'edad')" [value]="edadPersona">
+    <button (click)="agregarPersona()">Registrar</button>
+
+    <li *ngFor="let i of listaObjetosPersona">
+      <p *ngIf="i.edad >= 18">{{ i.nombre }} es mayor de edad</p>
+      <p *ngIf="i.edad < 18">{{ i.nombre }} es menor de edad</p>
+    </li>
+  </div>
+
+</div>

@@ -1,0 +1,12 @@
+<div class="item-pt-contenedor">
+  <div class="tarjeta">
+    <img [src]="pokemon.imagen" alt="">
+    <p class="nombre-pokemon">{{ pokemon.nombre }}</p>
+    <p class="dato-pokemon">{{ pokemon.altura }} m</p>
+    <p class="dato-pokemon">{{ pokemon.peso }} lb</p>
+    <div class="footer-item">
+      <i class="fa fa-caret-left" *ngIf="indiceEstado > 0" (click)="clickIzquierda()"></i>
+      <i class="fa fa-caret-right" *ngIf="indiceEstado < this.estados.length - 1" (click)="clickDerecha()"></i>
+    </div>
+  </div>
+</div>

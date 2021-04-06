@@ -1,0 +1,78 @@
+<div class="container" *ngIf="!mostrarDetalles">
+  <div class="header">
+    <div class="row">
+      <div class="col-7">
+        <div class="form-group">
+          <input type="text" (keyup)="filtro($event)" placeholder="Buscar" class="form-control">
+        </div>
+      </div>
+      <div class="col-3">
+        <button class="btn btn-success btn-block" (click)="buscar()">
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-block btn-primary" (click)="cambiarVista(1)">
+          <i class="fa fa-list"></i>
+        </button>
+      </div>
+      <div class="col-1">
+        <button class="btn btn-block btn-danger" (click)="cambiarVista(2)">
+          <i class="fa fa-table"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+<!--  <div class="row" style="margin-top: 30px" *ngIf="vistaActual === 1">-->
+<!--    <ul class="list-group">-->
+<!--      <li *ngFor="let i of listaParaMostrar" class="list-group-item">-->
+<!--        <div class="item-lista">-->
+<!--          <h4>{{ i.name }}</h4>-->
+<!--          <button class="btn btn-success" (click)="seleccionar(i)">-->
+<!--            <i class="fa fa-eye"></i>-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+  <div class="row" style="margin-top: 30px">
+    <div class="list-group-item" *ngFor="let i of listaParaMostrar"
+         [ngClass]="{'col-6': vistaActual === 2, 'col-12': vistaActual === 1}">
+      <div class="item-lista">
+        <h4>{{ i.name }}</h4>
+        <button class="btn btn-success" (click)="seleccionar(i)">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-primary mr-1" (click)="anteriorPagina()" *ngIf="paginaActual > 0">Anterior</button>
+    </div>
+    <div class="col-6">
+      <button class="btn btn-primary" (click)="siguientePagina()">Siguiente</button>
+    </div>
+  </div>
+</div>
+<div class="container" *ngIf="mostrarDetalles">
+  <div class="row" *ngIf="cargando">
+    <h3>Cargando...</h3>
+  </div>
+  <div class="row" *ngIf="!cargando">
+    <div class="col-3">
+      <img [src]="seleccion.imagen" class="img-pokemon">
+    </div>
+    <div class="col-7">
+      <h4>{{ seleccion.nombre }}</h4>
+      <h6>{{ seleccion.altura }}</h6>
+      <h6>{{ seleccion.peso }}</h6>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn btn-danger" (click)="mostrarDetalles = false">Regresar</button>
+  </div>
+</div>

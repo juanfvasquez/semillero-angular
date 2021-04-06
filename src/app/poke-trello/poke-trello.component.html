@@ -1,0 +1,40 @@
+<div class="contenedor">
+  <div class="header">
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <input type="text" class="form-control" id="txtBusqueda" placeholder="Buscar" (keyup)="eventoInput($event.target)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  Contenedor de las columnas-->
+  <div class="row contenedor-columnas">
+    <div class="col-4 columna-pokemon">
+      <div class="titulo-columna">
+        <h4>Libre</h4>
+      </div>
+      <app-item-poke-trello *ngFor="let p of mostrarPorEstado('libre')"
+                            [pokemon]="p"
+      ></app-item-poke-trello>
+    </div>
+    <div class="col-4 columna-pokemon">
+      <div class="titulo-columna">
+        <h4>Capturado</h4>
+      </div>
+      <app-item-poke-trello *ngFor="let p of mostrarPorEstado('capturado')"
+                            [pokemon]="p"
+                            (emisor)="eliminar($event)"
+      ></app-item-poke-trello>
+    </div>
+    <div class="col-4 columna-pokemon">
+      <div class="titulo-columna">
+        <h4>Muerto</h4>
+      </div>
+      <app-item-poke-trello *ngFor="let p of mostrarPorEstado('muerto')"
+                            [pokemon]="p"
+      ></app-item-poke-trello>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<h2>Ejemplos If y Switch</h2>
+
+<div id="container">
+  <button class="btn btn-primary" (click)="clickBoton(1)">Rojo</button>
+  <button class="btn btn-primary" (click)="clickBoton(0)">Azul</button>
+  <button class="btn btn-primary" (click)="clickBoton(2)">Verde</button>
+  <button class="btn btn-primary" (click)="clickBoton(3)">Negro</button>
+  <button class="btn btn-primary" (click)="clickBoton(4)">Por defecto</button>
+  <div [ngSwitch]="seleccion">
+<!--    <div id="div" *ngIf="seleccion === 1"></div>-->
+    <div id="div1" *ngSwitchCase="1"></div>
+    <div id="div2" *ngSwitchCase="0"></div>
+    <div id="div3" *ngSwitchCase="2"></div>
+    <div id="div4" *ngSwitchCase="3"></div>
+    <div id="div_por_defecto" *ngSwitchDefault></div>
+  </div>
+</div>

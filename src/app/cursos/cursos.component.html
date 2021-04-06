@@ -1,0 +1,26 @@
+<div class="container">
+  <h3>Cursos</h3>
+
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let c of cursos">
+        <td>{{ c.id }}</td>
+        <td>{{ c.nombre }}</td>
+        <td>
+          <a [routerLink]="['/curso', c.id]">
+            <i class="fa fa-eye"></i>
+          </a>
+          <button class="btn btn-success" style="margin-left: 10px">
+            <i class="fa fa-eye"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

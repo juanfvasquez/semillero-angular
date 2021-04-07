@@ -21,6 +21,7 @@ import { IntegrantesComponent } from './integrantes/integrantes.component';
 import { routing } from './routes/app_routes';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 import { FormCursoComponent } from './form-curso/form-curso.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,13 @@ import { FormCursoComponent } from './form-curso/form-curso.component';
     VideosComponent,
     IntegrantesComponent,
     DetalleCursoComponent,
-    FormCursoComponent
+    FormCursoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    routing
+    routing,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

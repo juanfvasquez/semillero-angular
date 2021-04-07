@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Curso} from '../models/curso.interface';
 import {CursosService} from '../shared/services/cursos.service';
 import {Observable} from 'rxjs';
@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   templateUrl: './cursos.component.html',
   styleUrls: ['./cursos.component.scss']
 })
-export class CursosComponent implements OnInit {
+export class CursosComponent implements OnInit, OnDestroy {
 
   cursos: Curso[] = [];
   subscripcionCursos = this.servicioCursos.getSubscripcionCursos()
@@ -24,4 +24,9 @@ export class CursosComponent implements OnInit {
     this.cursos = this.servicioCursos.getCursos();
   }
 
+  ngOnDestroy() {
+    if (this.subscripcionCursos) {
+      this.subscripcionCursos.unsubscribe();
+    }
+  }
 }

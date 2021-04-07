@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemResultado, Resultado} from '../models/resultado.interface';
 import {Pokemon} from '../models/Pokemon';
+import {PokemonService} from '../shared/services/pokemon.service';
 
 @Component({
   selector: 'app-poke-trello',
@@ -15,21 +16,43 @@ export class PokeTrelloComponent implements OnInit {
   listaPokemon: Pokemon[] = [];
   busqueda: string = '';
   intervalo: any;
+  urlInicial = `https://pokeapi.co/api/v2/pokemon?limit=${this.LIMITE}&offset=0`;
 
-  constructor() { }
+  constructor(
+    private servicioPokemon: PokemonService
+  ) { }
 
   ngOnInit(): void {
-    this.llenarLista(`https://pokeapi.co/api/v2/pokemon?limit=${this.LIMITE}&offset=0`);
+    this.llenarLista(this.urlInicial);
   }
 
   llenarLista(url: string) {
-    this.consultarLista(url).then(data => {
-      this.listaResultados = [...this.listaResultados, ...data.results];
-      data.results.forEach(r => this.consultarPokemon(r.url));
-      if (Boolean(data.next)) {
-        this.llenarLista(data.next);
-      }
-    });
+    const respuestaPokemon = (infoPokemon: any) => {
+      const nuevoPokemon = new Pokemon(
+        infoPokemon.name,
+        infoPokemon.height,
+        infoPokemon.weight,
+        infoPokemon.sprites.front_default
+      );
+      this.listaPokemon.push(nuevoPokemon);
+    };
+    this.servicioPokemon.consultarListaPokemon(url)
+      .subscribe(resultado => {
+        this.listaResultados = [...this.listaResultados, ...resultado.results];
+        resultado.results.forEach(r => this.servicioPokemon.consultarPokemon(r.url)
+          .subscribe(respuestaPokemon));
+        if (Boolean(resultado.next)) {
+          this.llenarLista(resultado.next);
+        }
+      });
+
+    // this.consultarLista(url).then(data => {
+    //   this.listaResultados = [...this.listaResultados, ...data.results];
+    //   data.results.forEach(r => this.consultarPokemon(r.url));
+    //   if (Boolean(data.next)) {
+    //     this.llenarLista(data.next);
+    //   }
+    // });
   }
 
   consultarLista(url: string) {

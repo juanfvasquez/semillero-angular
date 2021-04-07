@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Curso} from '../models/curso.interface';
 import {ActivatedRoute} from '@angular/router';
+import {CursosService} from '../shared/services/cursos.service';
 
 @Component({
   selector: 'app-detalle-curso',
@@ -9,18 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DetalleCursoComponent implements OnInit {
 
-  cursos: Curso[] = [
-    { id: 1, nombre: "Curso Angular", integrantes: [] },
-    { id: 2, nombre: "Curso Go", integrantes: [] },
-    { id: 3, nombre: "Curso Flutter", integrantes: [] },
-    { id: 4, nombre: "Curso React", integrantes: [] },
-    { id: 5, nombre: "Curso Java", integrantes: [] },
-  ];
+  cursos: Curso[] = [];
 
   curso: Curso = { id: 0, nombre: '', integrantes: [] };
   id: number = 0;
+
   constructor(
-    public activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private servicioCursos: CursosService
   ) { }
   // http://localhost:4200/curso/1  Params
   // '/curso/:id'
@@ -29,6 +26,8 @@ export class DetalleCursoComponent implements OnInit {
   // '/curso'
 
   ngOnInit(): void {
+    this.cursos = this.servicioCursos.getCursos();
+
     // this.id = Number(this.activeRoute.snapshot.paramMap.get('id')); // Params
     this.id = Number(this.activeRoute.snapshot.queryParamMap.get('id')); // Query params
 

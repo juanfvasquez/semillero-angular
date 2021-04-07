@@ -20,6 +20,7 @@ import { VideosComponent } from './videos/videos.component';
 import { IntegrantesComponent } from './integrantes/integrantes.component';
 import { routing } from './routes/app_routes';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
+import { FormCursoComponent } from './form-curso/form-curso.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
     CursosComponent,
     VideosComponent,
     IntegrantesComponent,
-    DetalleCursoComponent
+    DetalleCursoComponent,
+    FormCursoComponent
   ],
   imports: [
     BrowserModule,

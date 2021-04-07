@@ -1,0 +1,13 @@
+<div class="row" style="margin-top: 30px">
+  <div class="col-11">
+    <div class="form-group">
+      <label for="txtNombre">Nombre Curso</label>
+      <input type="text" id="txtNombre" class="form-control" (change)="eventoInput($event)" placeholder="Nombre curso" [value]="nombre">
+    </div>
+  </div>
+  <div class="col-1">
+    <button class="btn btn-success btn-block" (click)="crearCurso()" style="margin-top: 25px">
+      <i class="fa fa-plus"></i>
+    </button>
+  </div>
+</div>

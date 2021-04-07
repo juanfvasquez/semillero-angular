@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Curso} from '../models/curso.interface';
+import {CursosService} from '../shared/services/cursos.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cursos',
@@ -8,17 +10,18 @@ import {Curso} from '../models/curso.interface';
 })
 export class CursosComponent implements OnInit {
 
-  cursos: Curso[] = [
-    { id: 1, nombre: "Curso Angular", integrantes: [] },
-    { id: 2, nombre: "Curso Go", integrantes: [] },
-    { id: 3, nombre: "Curso Flutter", integrantes: [] },
-    { id: 4, nombre: "Curso React", integrantes: [] },
-    { id: 5, nombre: "Curso Java", integrantes: [] },
-  ];
+  cursos: Curso[] = [];
+  subscripcionCursos = this.servicioCursos.getSubscripcionCursos()
+    .subscribe(listaCursos => {
+      this.cursos = listaCursos;
+    });
 
-  constructor() { }
+  constructor(
+    private servicioCursos: CursosService
+  ) { }
 
   ngOnInit(): void {
+    this.cursos = this.servicioCursos.getCursos();
   }
 
 }

@@ -10,7 +10,8 @@ const appRoutes: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'integrantes', component: IntegrantesComponent },
-  { path: 'curso/:id', component: DetalleCursoComponent },
+  // { path: 'curso/:id', component: DetalleCursoComponent },
+  { path: 'curso', component: DetalleCursoComponent },
   { path: '**', redirectTo: '' },
 ];
 

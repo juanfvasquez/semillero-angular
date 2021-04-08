@@ -4,9 +4,10 @@ import {VideosComponent} from '../videos/videos.component';
 import {IntegrantesComponent} from '../integrantes/integrantes.component';
 import {MenuComponent} from '../menu/menu.component';
 import {DetalleCursoComponent} from '../detalle-curso/detalle-curso.component';
+import {EjemplosPipesComponent} from '../ejemplos-pipes/ejemplos-pipes.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MenuComponent },
+  { path: '', component: EjemplosPipesComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'integrantes', component: IntegrantesComponent },

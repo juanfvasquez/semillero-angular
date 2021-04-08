@@ -22,6 +22,8 @@ import { routing } from './routes/app_routes';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 import { FormCursoComponent } from './form-curso/form-curso.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {EjemplosPipesComponent} from './ejemplos-pipes/ejemplos-pipes.component';
+import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
     IntegrantesComponent,
     DetalleCursoComponent,
     FormCursoComponent,
+    EjemplosPipesComponent,
+    LetrasPipe,
   ],
   imports: [
     BrowserModule,

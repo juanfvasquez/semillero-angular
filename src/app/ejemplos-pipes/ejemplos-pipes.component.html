@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <h3>Pipes</h3>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th># Clientes</th>
+        <th>Categoría</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of datos">
+          <td>{{ u.id }}</td>
+          <td>{{ u.nombre | uppercase }}</td>
+          <td>{{ u.monto | currency }}</td>
+          <td>{{ u.fecha | date: 'dd-MM-YYYY' }}</td>
+          <td>{{ u.clientes | number }}</td>
+          <td>{{ u.categoria | letras : 'en' : 'uppercase' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

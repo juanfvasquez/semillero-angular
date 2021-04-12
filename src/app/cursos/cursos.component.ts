@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Curso} from '../models/curso.interface';
 import {CursosService} from '../shared/services/cursos.service';
-import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cursos',
@@ -17,7 +17,8 @@ export class CursosComponent implements OnInit, OnDestroy {
     });
 
   constructor(
-    private servicioCursos: CursosService
+    private servicioCursos: CursosService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,5 +29,9 @@ export class CursosComponent implements OnInit, OnDestroy {
     if (this.subscripcionCursos) {
       this.subscripcionCursos.unsubscribe();
     }
+  }
+
+  navegar(id: number) {
+    this.router.navigate([`/curso`], { queryParams: { id } });
   }
 }

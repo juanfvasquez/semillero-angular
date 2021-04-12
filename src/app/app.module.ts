@@ -24,6 +24,8 @@ import { FormCursoComponent } from './form-curso/form-curso.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {EjemplosPipesComponent} from './ejemplos-pipes/ejemplos-pipes.component';
 import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
+import { TemplateFormsComponent } from './formularios/template-forms/template-forms.component';
+import { ReactiveFormsComponent } from './formularios/reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
     FormCursoComponent,
     EjemplosPipesComponent,
     LetrasPipe,
+    TemplateFormsComponent,
+    ReactiveFormsComponent,
   ],
   imports: [
     BrowserModule,

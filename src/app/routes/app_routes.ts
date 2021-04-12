@@ -7,7 +7,7 @@ import {DetalleCursoComponent} from '../detalle-curso/detalle-curso.component';
 import {EjemplosPipesComponent} from '../ejemplos-pipes/ejemplos-pipes.component';
 
 const appRoutes: Routes = [
-  { path: '', component: EjemplosPipesComponent },
+  { path: '', component: MenuComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'integrantes', component: IntegrantesComponent },

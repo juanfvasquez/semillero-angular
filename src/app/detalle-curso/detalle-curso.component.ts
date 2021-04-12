@@ -20,10 +20,10 @@ export class DetalleCursoComponent implements OnInit {
     private servicioCursos: CursosService
   ) { }
   // http://localhost:4200/curso/1  Params
-  // '/curso/:id'
+  // path: '/curso/:id'
 
   // http://localhost:4200/curso?id=1&nombre=jdfs Query Params
-  // '/curso'
+  // path: '/curso'
 
   ngOnInit(): void {
     this.cursos = this.servicioCursos.getCursos();

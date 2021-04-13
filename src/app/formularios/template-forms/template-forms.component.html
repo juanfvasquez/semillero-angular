@@ -14,10 +14,14 @@
             placeholder="Nombre"
             required
             minlength="3"
-            ngModel
+            [(ngModel)]="usuario.nombre"
             #nombre="ngModel"
             [class.is-invalid]="nombre.invalid && nombre.touched"
           >
+          <small
+            class="form-text text-danger"
+            *ngIf="nombre.touched && nombre.invalid"
+          >Nombre inválido</small>
         </div>
       </div>
       <div class="col-12 form-group">
@@ -30,10 +34,14 @@
             placeholder="Apellido"
             required
             minlength="3"
-            ngModel
+            [ngModel]="usuario.apellido"
             #apellido="ngModel"
             [class.is-invalid]="apellido.invalid && apellido.touched"
           >
+          <small
+            class="form-text text-danger"
+            *ngIf="apellido.touched && apellido.invalid"
+          >Apellido inválido</small>
         </div>
       </div>
       <div class="col-12 form-group">
@@ -46,10 +54,34 @@
             placeholder="Email"
             required
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-            ngModel
+            [ngModel]="usuario.email"
             #email="ngModel"
             [class.is-invalid]="email.invalid && email.touched"
           >
+          <small
+            class="form-text text-danger"
+            *ngIf="email.touched && email.invalid"
+          >Email inválido</small>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <label class="col-2 col-form-label">País</label>
+        <div class="col-10">
+          <select
+            class="form-control"
+            name="pais"
+            required
+            [disabled]="paises.length <= 0"
+            [ngModel]="usuario.pais"
+            [class.is-invalid]="pais.invalid && pais.touched"
+            #pais="ngModel"
+          >
+            <option *ngFor="let p of paises" [value]="p.codigo">{{ p.nombre }}</option>
+          </select>
+          <small
+            class="form-text text-danger"
+            *ngIf="pais.touched && pais.invalid"
+          >País inválido</small>
         </div>
       </div>
       <div class="col-12" style="margin-top: 20px">
@@ -57,5 +89,8 @@
         <button class="btn btn-danger">Limpiar</button>
       </div>
     </form>
+  </div>
+  <div class="row">
+    {{ usuario | json }}
   </div>
 </div>

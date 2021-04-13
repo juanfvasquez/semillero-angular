@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-template-forms',
@@ -12,4 +13,12 @@ export class TemplateFormsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  guardar(form: NgForm) {
+    console.log(form);
+    if (form.invalid) {
+      Object.values(form.controls).forEach(control => {
+        control.markAsTouched();
+      });
+    }
+  }
 }

@@ -26,6 +26,7 @@ import {EjemplosPipesComponent} from './ejemplos-pipes/ejemplos-pipes.component'
 import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
 import { TemplateFormsComponent } from './formularios/template-forms/template-forms.component';
 import { ReactiveFormsComponent } from './formularios/reactive-forms/reactive-forms.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,9 @@ import { ReactiveFormsComponent } from './formularios/reactive-forms/reactive-fo
     BrowserModule,
     AppRoutingModule,
     routing,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

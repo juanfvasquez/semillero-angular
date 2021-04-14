@@ -11,10 +11,11 @@ import {Pais} from '../../models/pais.interface';
 export class TemplateFormsComponent implements OnInit {
 
   usuario = {
-    nombre: "Juan",
+    nombre: "",
     apellido: "Vásquez",
     email: "juan@mail.com",
-    pais: ""
+    pais: "",
+    genero: ""
   };
 
   paises: Pais[] = [];
@@ -37,6 +38,7 @@ export class TemplateFormsComponent implements OnInit {
       Object.values(form.controls).forEach(control => {
         control.markAsTouched();
       });
+      return;
     }
   }
 }

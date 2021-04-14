@@ -1,1 +1,71 @@
-<p>reactive-forms works!</p>
+<div class="container">
+  <div class="row">
+    <h3>Reactive Forms</h3>
+  </div>
+  <form autocomplete="off" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="row form-group">
+      <label>Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre"
+        formControlName="nombre"
+      >
+    </div>
+    <div class="row form-group">
+      <label>Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Apellido"
+        formControlName="apellido"
+      >
+    </div>
+    <div class="row form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        placeholder="Email"
+        formControlName="email"
+      >
+    </div>
+    <div class="row form-group">
+      <label class="col-form-label">Contraseña</label>
+      <div class="form-row col" formGroupName="passwords">
+        <div class="col">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Contraseña"
+            formControlName="password"
+            [class.is-invalid]="false"
+            style="margin-bottom: 10px"
+          >
+        </div>
+        <div class="col">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirmar Contraseña"
+            formControlName="password2"
+            [class.is-invalid]="pass2NoValido"
+          >
+          <small
+            class="text-danger"
+            *ngIf="pass2NoValido"
+          >Las contraseñas no coinciden</small>
+        </div>
+      </div>
+    </div>
+    <div class="row form-group">
+      <button class="btn btn-outline-primary">Aceptar</button>
+    </div>
+  </form>
+  <br><br>
+  <div class="row">
+    <p>Estado: {{ form.status }}</p>
+    <hr>
+    {{ form.value | json }}
+  </div>
+</div>

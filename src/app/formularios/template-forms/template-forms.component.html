@@ -84,9 +84,44 @@
           >País inválido</small>
         </div>
       </div>
+      <div class="col-12 form-group">
+        <label class="col-2 col-form-label">Género</label>
+        <div class="col-10">
+          <input
+            id="radioM"
+            class="form-check-input"
+            type="radio"
+            name="genero"
+            value="M"
+            required
+            [ngModel]="usuario.genero"
+            #genero="ngModel"
+          >
+          <label class="form-check-label" for="radioM">Masculino</label>
+        </div>
+      </div>
+      <div class="col-12 form-group">
+        <div class="col-10">
+          <input
+            id="radioF"
+            class="form-check-input"
+            type="radio"
+            name="genero"
+            value="F"
+            required
+            [ngModel]="usuario.genero"
+            #genero="ngModel"
+          >
+          <label class="form-check-label" for="radioF">Femenino</label>
+        </div>
+        <small
+          class="form-text text-danger"
+          *ngIf="genero.touched && genero.invalid"
+        >Debe seleccionar el género</small>
+      </div>
       <div class="col-12" style="margin-top: 20px">
         <button type="submit" class="btn btn-primary" style="margin-right: 10px">Registrar</button>
-        <button class="btn btn-danger">Limpiar</button>
+        <button type="reset" class="btn btn-danger">Limpiar</button>
       </div>
     </form>
   </div>

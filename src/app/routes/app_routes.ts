@@ -6,6 +6,7 @@ import {MenuComponent} from '../menu/menu.component';
 import {DetalleCursoComponent} from '../detalle-curso/detalle-curso.component';
 import {EjemplosPipesComponent} from '../ejemplos-pipes/ejemplos-pipes.component';
 import {TemplateFormsComponent} from '../formularios/template-forms/template-forms.component';
+import {ReactiveFormsComponent} from '../formularios/reactive-forms/reactive-forms.component';
 
 const appRoutes: Routes = [
   { path: '', component: MenuComponent },
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
   // { path: 'curso/:id', component: DetalleCursoComponent },
   { path: 'curso', component: DetalleCursoComponent },
   { path: 'template-forms', component: TemplateFormsComponent },
+  { path: 'reactive-forms', component: ReactiveFormsComponent },
   { path: '**', redirectTo: '' },
 ];
 

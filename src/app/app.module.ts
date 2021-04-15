@@ -68,6 +68,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  // entryComponents: [FormularioComponent]
+  entryComponents: [FormularioComponent]
 })
 export class AppModule { }

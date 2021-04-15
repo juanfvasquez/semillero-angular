@@ -4,6 +4,7 @@ import {Usuario} from '../../models/usuario.class';
 import {Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormularioComponent} from '../formulario/formulario.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-listado',
@@ -31,14 +32,41 @@ export class ListadoComponent implements OnInit {
     });
   }
 
-  editar(usuario: Usuario) {
+  editar(usuario: Usuario, indice: number) {
     const modalRef = this.modal.open(FormularioComponent,
-      { backdrop: 'static', size: 'lg' });
-    console.log(usuario);
+      { backdrop: 'static', size: 'lg', windowClass: 'modal' });
     modalRef.componentInstance.usuario = usuario;
+    modalRef.componentInstance.tipo = 'editar';
+    modalRef.componentInstance.emisor.subscribe((dato: Usuario | null) => {
+      if (Boolean(dato)) {
+        this.listaUsuarios[indice] = dato as Usuario;
+      }
+    });
+  }
+
+  ver(usuario: Usuario) {
+    const modalRef = this.modal.open(FormularioComponent,
+      { backdrop: 'static', size: 'lg', windowClass: 'modal' });
+    modalRef.componentInstance.usuario = usuario;
+    modalRef.componentInstance.tipo = 'ver';
   }
 
   eliminarUsuario(indice: number) {
-    this.listaUsuarios.splice(indice, 1);
+    Swal.fire({
+      title: '¿Está seguro que desea eliminar el usuario?',
+      text: 'No podrá recuperar los datos',
+      icon: 'question',
+      showCancelButton: true,
+      showConfirmButton: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.listaUsuarios.splice(indice, 1);
+        Swal.fire(
+          'Eliminado correctamente',
+          'El usuario fue eliminado',
+          'success'
+        )
+      }
+    });
   }
 }

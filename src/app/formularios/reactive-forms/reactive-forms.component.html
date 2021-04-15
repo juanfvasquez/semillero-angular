@@ -35,13 +35,17 @@
       <div class="form-row col" formGroupName="passwords">
         <div class="col">
           <input
-            type="password"
+            type="text"
             class="form-control"
             placeholder="Contraseña"
             formControlName="password"
-            [class.is-invalid]="false"
+            [class.is-invalid]="pass1NoValido"
             style="margin-bottom: 10px"
           >
+          <small
+            *ngIf="pass1NoValido"
+            class="text-danger"
+          >Contraseña débil</small>
         </div>
         <div class="col">
           <input
@@ -49,11 +53,11 @@
             class="form-control"
             placeholder="Confirmar Contraseña"
             formControlName="password2"
-            [class.is-invalid]="pass2NoValido"
+            [class.is-invalid]="pass2NoValido && enviado"
           >
           <small
             class="text-danger"
-            *ngIf="pass2NoValido"
+            *ngIf="pass2NoValido && enviado"
           >Las contraseñas no coinciden</small>
         </div>
       </div>

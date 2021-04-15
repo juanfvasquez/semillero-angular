@@ -10,6 +10,7 @@ import {ValidadorService} from '../../shared/services/validador.service';
 export class ReactiveFormsComponent implements OnInit {
 
   form: FormGroup;
+  enviado = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,7 +25,7 @@ export class ReactiveFormsComponent implements OnInit {
       apellido: ['', [ Validators.required, Validators.minLength(3) ]],
       email: ['', [ Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$') ]],
       passwords: this.formBuilder.group({
-        password: ['', Validators.required],
+        password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
         password2: ['', Validators.required],
       })
     }, {
@@ -36,6 +37,7 @@ export class ReactiveFormsComponent implements OnInit {
   }
 
   guardar() {
+    this.enviado = true;
     console.log(this.form);
     console.log(this.pass2NoValido);
   }
@@ -45,9 +47,16 @@ export class ReactiveFormsComponent implements OnInit {
     // const pass2 = this.form.get('passwords.password2')?.value;
     //
     // return Boolean(pass) && Boolean(pass2) && pass !== pass2;
+    // const group = this.form.controls.passwords as FormGroup;
+    // const pass = group.controls.password?.value;
+    // const pass2 = group.controls.password2?.value;
+    // return Boolean(pass) && Boolean(pass2) && pass !== pass2;
+
     const group = this.form.controls.passwords as FormGroup;
-    const pass = group.controls.password?.value;
-    const pass2 = group.controls.password2?.value;
-    return Boolean(pass) && Boolean(pass2) && pass !== pass2;
+    return group.controls.password2?.hasError('noCoinciden');
+  }
+
+  get pass1NoValido() {
+    return this.form.get('passwords.password')?.dirty && this.form.get('passwords.password')?.hasError('pattern');
   }
 }

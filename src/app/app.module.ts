@@ -27,6 +27,9 @@ import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
 import { TemplateFormsComponent } from './formularios/template-forms/template-forms.component';
 import { ReactiveFormsComponent } from './formularios/reactive-forms/reactive-forms.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ListadoComponent } from './usuarios/listado/listado.component';
+import { FormularioComponent } from './usuarios/formulario/formulario.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     LetrasPipe,
     TemplateFormsComponent,
     ReactiveFormsComponent,
+    ListadoComponent,
+    FormularioComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,9 +63,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     routing,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  // entryComponents: [FormularioComponent]
 })
 export class AppModule { }

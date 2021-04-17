@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h3>Subir Archivos con Firebase</h3>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="form-group">
+      <label>Seleccione un archivo</label>
+      <input type="file" (change)="subir($event)" accept=".jpg, .png">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h3>Estado de la carga: {{ estado }}</h3>
+    <br>
+    <h3>URL de descarga: {{ url | async }}</h3>
+  </div>
+</div>

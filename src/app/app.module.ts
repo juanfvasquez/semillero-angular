@@ -34,6 +34,10 @@ import { LoginComponent } from './posts/login/login.component';
 import {InterceptorService} from './shared/services/interceptor.service';
 import {GuardiaLoginService} from './shared/services/guardia-login.service';
 import {GuardiaNombreService} from './shared/services/guardia-nombre.service';
+import {AngularFireModule} from '@angular/fire';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import { StorageComponent } from './ejemplo-firebase/storage/storage.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +65,7 @@ import {GuardiaNombreService} from './shared/services/guardia-nombre.service';
     ListadoComponent,
     FormularioComponent,
     LoginComponent,
+    StorageComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +74,9 @@ import {GuardiaNombreService} from './shared/services/guardia-nombre.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
     GuardiaLoginService,

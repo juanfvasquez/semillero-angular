@@ -12,6 +12,7 @@ import {FormularioComponent} from '../usuarios/formulario/formulario.component';
 import {LoginComponent} from '../posts/login/login.component';
 import {GuardiaLoginService} from '../shared/services/guardia-login.service';
 import {GuardiaNombreService} from '../shared/services/guardia-nombre.service';
+import {StorageComponent} from '../ejemplo-firebase/storage/storage.component';
 
 const appRoutes: Routes = [
   { path: '', component: MenuComponent,  },
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   },
   { path: 'form-modal', component: FormularioComponent },
   { path: 'login', component: LoginComponent},
+  { path: 'storage-firebase', component: StorageComponent},
   { path: '**', redirectTo: '' },
 ];
 

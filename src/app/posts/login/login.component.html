@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="login-wrapper">
+    <h3>Login</h3>
+    <div class="form-group">
+      <label>Email</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="usuario.email"
+        placeholder="Email"
+      >
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input
+        type="password"
+        class="form-control"
+        [(ngModel)]="usuario.password"
+        placeholder="Contraseña"
+      >
+    </div>
+    <div class="row">
+      <button class="btn btn-primary btn-block" (click)="login()">Inciar sesión</button>
+    </div>
+  </div>
+</div>

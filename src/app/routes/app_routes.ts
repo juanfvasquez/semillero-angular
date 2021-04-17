@@ -9,18 +9,29 @@ import {TemplateFormsComponent} from '../formularios/template-forms/template-for
 import {ReactiveFormsComponent} from '../formularios/reactive-forms/reactive-forms.component';
 import {ListadoComponent} from '../usuarios/listado/listado.component';
 import {FormularioComponent} from '../usuarios/formulario/formulario.component';
+import {LoginComponent} from '../posts/login/login.component';
+import {GuardiaLoginService} from '../shared/services/guardia-login.service';
+import {GuardiaNombreService} from '../shared/services/guardia-nombre.service';
 
 const appRoutes: Routes = [
-  { path: '', component: MenuComponent },
-  { path: 'cursos', component: CursosComponent },
+  { path: '', component: MenuComponent,  },
+  { path: 'cursos', component: CursosComponent, canActivate: [GuardiaLoginService] },
   { path: 'videos', component: VideosComponent },
   { path: 'integrantes', component: IntegrantesComponent },
   // { path: 'curso/:id', component: DetalleCursoComponent },
   { path: 'curso', component: DetalleCursoComponent },
   { path: 'template-forms', component: TemplateFormsComponent },
   { path: 'reactive-forms', component: ReactiveFormsComponent },
-  { path: 'modals', component: ListadoComponent },
+  {
+    path: 'modals',
+    component: ListadoComponent,
+    canActivate: [GuardiaNombreService],
+    data: {
+      nombresPermitidos: ['pedro', 'pablo', 'juan']
+    }
+  },
   { path: 'form-modal', component: FormularioComponent },
+  { path: 'login', component: LoginComponent},
   { path: '**', redirectTo: '' },
 ];
 

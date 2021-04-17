@@ -21,7 +21,7 @@ import { IntegrantesComponent } from './integrantes/integrantes.component';
 import { routing } from './routes/app_routes';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 import { FormCursoComponent } from './form-curso/form-curso.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import {EjemplosPipesComponent} from './ejemplos-pipes/ejemplos-pipes.component';
 import { LetrasPipe } from './shared/pipes/letras/letras.pipe';
 import { TemplateFormsComponent } from './formularios/template-forms/template-forms.component';
@@ -30,6 +30,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ListadoComponent } from './usuarios/listado/listado.component';
 import { FormularioComponent } from './usuarios/formulario/formulario.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './posts/login/login.component';
+import {InterceptorService} from './shared/services/interceptor.service';
+import {GuardiaLoginService} from './shared/services/guardia-login.service';
+import {GuardiaNombreService} from './shared/services/guardia-nombre.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +60,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsComponent,
     ListadoComponent,
     FormularioComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +71,11 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    GuardiaLoginService,
+    GuardiaNombreService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent],
   entryComponents: [FormularioComponent]
 })
